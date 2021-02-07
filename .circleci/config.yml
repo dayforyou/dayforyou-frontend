@@ -1,0 +1,18 @@
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@0.1.21
+
+jobs:
+  dump-in-bucket:
+    working_directory: ~/build-root
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+
+workflows:
+  version: 2.1
+  deploy-to-s3:
+    jobs:
+      - dump-in-bucket
