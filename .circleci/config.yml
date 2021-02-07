@@ -19,5 +19,5 @@ workflows:
   version: 2.1
   deploy-to-s3:
     jobs:
-      context: frontend
-        - dump-in-bucket
+      - dump-in-bucket:
+          context: frontend
