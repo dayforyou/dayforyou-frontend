@@ -21,7 +21,8 @@ workflows:
       - dump-in-bucket:
           name: "dump in bucket"
           context: frontend
-          filters:
-            branches:
-              only:
-                - main
+          # filters:
+          #   branches:
+          #     only:
+          #       - main
+
