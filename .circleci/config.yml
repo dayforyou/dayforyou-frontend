@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+
+jobs:
+  dump-in-bucket:
+    working_directory: ~/build-root
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - aws-s3/copy:
+          from: ./index.html
+          to: "s3://planitdiscovery-frontend"
+
+workflows:
+  version: 2.1
+  deploy-to-s3:
+    jobs:
+      - dump-in-bucket:
+          name: "dump in bucket"
+          context: frontend
+          filters:
+            branches:
+              only:
+                - main
