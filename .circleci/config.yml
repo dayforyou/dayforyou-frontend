@@ -19,4 +19,8 @@ workflows:
   deploy-to-s3:
     jobs:
       - dump-in-bucket:
+        filters:
+          branches:
+            only:
+              - main
           context: frontend
